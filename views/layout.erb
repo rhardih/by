@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A page to trigger building of android toolchains">
+    <title>Stand</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+
+		<!--[if lte IE 8]>
+			<link rel="stylesheet" href="/side-menu-old-ie.css">
+			<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css">
+		<![endif]-->
+		<!--[if gt IE 8]><!-->
+			<link rel="stylesheet" href="/side-menu.css">
+			<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+		<!--<![endif]-->
+		<!--[if lt IE 9]>
+			<script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+		<![endif]-->
+
+    <style type='text/css'>
+    .link {
+      stroke: #1f8dd6;
+    }
+    .fullwidth {
+      width: 100%;
+    }
+    .logos svg {
+      max-height: 150px;
+    }
+
+    /* 
+       Pure CSS Extras Alerts from:
+       https://github.com/tilomitra/cssextras
+     */
+
+    .pure-alert {
+			position: relative;
+			margin-bottom: 1em;
+			padding: 1em;
+			background: #ccc;
+			border-radius: 3px;
+    }
+    
+    .pure-alert label {
+      display: inline-block;
+      *display: inline;
+      /* IE7 inline-block hack */
+      *zoom: 1;
+      white-space: nowrap;
+    }
+    
+    .pure-alert {
+			background-color: rgb(209, 235, 238);
+			color: rgb(102, 131, 145);
+    }
+    .pure-alert-error {
+			background-color: #D13C38;
+			color: #fff;
+    }
+    
+    .pure-alert-warning {
+			background-color: rgb(250, 191, 103);
+			color: rgb(151, 96, 13);
+    }
+    
+    .pure-alert-success {
+			background-color: rgb(83, 180, 79);
+			color: #fff;
+    }
+    </style>
+  </head>
+<body>
+  <div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+      <!-- Hamburger icon -->
+      <span></span>
+    </a>
+
+    <div id="menu">
+      <div class="pure-menu">
+        <a class="pure-menu-heading" href="/">Stand</a>
+
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item">
+            <a href="https://travis-ci.org/rhardih/stand" class="pure-menu-link">Travis</a>
+          </li>
+          <li class="pure-menu-item">
+            <a href="https://hub.docker.com/r/rhardih/stand/" class="pure-menu-link">Docker Hub</a>
+          </li>
+          <li class="pure-menu-item">
+            <a href="https://github.com/rhardih/stand" class="pure-menu-link">Github</a>
+          </li>
+
+          <% first, _ = settings.ndk_info.first %>
+          <% settings.ndk_info.each do |key, value| %>
+            <li class="pure-menu-item <%= "menu-item-divided" if key == first %>">
+              <a href='/#<%= key %>' class="pure-menu-link"><%= key %></a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div id="main">
+      <%= yield %>
+    </div>
+  </div>
+
+  <script src="/ui.js"></script>
+</body>
+</html>
+
+

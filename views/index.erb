@@ -1,0 +1,72 @@
+<div class="header">
+  <h1>Build Overview</h1>
+  <h2>Standalone Toolchain for Android NDK in Docker</h2>
+</div>
+
+<div class="content">
+  <p>&nbsp;</p>
+
+  <div class="pure-g logos">
+    <div class="pure-u-1-3">
+      <a href='https://developer.android.com/ndk/downloads/index.html'>
+        <%= svg_image('Android_robot.svg') %>
+      </a>
+    </div>
+    <div class="pure-u-1-3">
+      <a href='https://travis-ci.org/rhardih/stand'>
+        <%= svg_image('TravisCI-Mascot-grey.svg') %>
+      </a>
+    </div>
+    <div class="pure-u-1-3">
+      <a href='https://hub.docker.com/r/rhardih/stand/'>
+        <%= svg_image('Docker-Cloud-Blue.svg') %>
+      </a>
+    </div>
+  </div>
+
+  <p>&nbsp;</p>
+
+  <p>Find a combination of NDK-, platform version and toolchain, from the lists
+  below and trigger a container build of that particular configuration from its
+  build page.</p>
+
+  <h2>NDK Versions</h2>
+
+  <% settings.ndk_info.each do |n, value| %>
+    <h2 id="<%= n %>" class="content-subhead"><%= n %></h2>
+
+    <table class="pure-table fullwidth">
+    <% value['platforms'].each_slice(twidth).with_index do |slice| %>
+        <thead>
+          <tr>
+            <th>Platform / Toolchain</th>
+            <% slice.each.with_index do |p| %>
+              <th><%= p.gsub(/android-/, "") %></th>
+            <% end %>
+            <% 1.upto(twidth - slice.size) do %>
+              <th></th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% value['toolchains'].each.with_index do |t, i| %>
+            <tr class="<%= (i % 2 == 0) ? "pure-table-odd" : "" %>">
+              <td><%= t %></td>
+              <% slice.each.with_index do |p| %>
+                <td>
+                  <a href='<%= "/build/#{n}/#{p}/#{t}" %> '>
+                    <%= link_icon %>
+                  </a>
+                </td>
+              <% end %>
+              <% 1.upto(twidth - slice.size) do %>
+                <td></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+    <% end %>
+    </table>
+  <% end %>
+</div>
+
