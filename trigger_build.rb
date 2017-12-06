@@ -19,9 +19,16 @@ class TriggerBuild
       exit
     end
 
+    build_args = [
+      '--build-arg NDK_URL=$NDK_URL',
+      '--build-arg NDK_SHA=$NDK_SHA',
+      '--build-arg PLATFORM=$PLATFORM',
+      '--build-arg TOOLCHAIN=$TOOLCHAIN',
+    ].join(' ')
+
     cmd = [
       'docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"',
-      "docker build -t rhardih/stand:#{tag} .",
+      "docker build #{build_args} -t rhardih/stand:#{tag} .",
       "docker push rhardih/stand:#{tag}"
     ].join(" && ")
 
