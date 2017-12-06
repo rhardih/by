@@ -19,9 +19,11 @@ class TriggerBuild
       exit
     end
 
-    cmd = %Q{docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" && \
-            docker build -t rhardih/stand:#{tag} . && \
-            docker push rhardih/stand:#{tag}}.squeeze
+    cmd = [
+      'docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"',
+      "docker build -t rhardih/stand:#{tag} .",
+      "docker push rhardih/stand:#{tag}"
+    ].join(" && ")
 
     payload = {
       req: { branch: "master" },
