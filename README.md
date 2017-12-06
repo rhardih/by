@@ -8,3 +8,7 @@ automatic builds via Travis.
 
 It provides an extensive list of combinations of NDKs, platforms and toolchains,
 along with a mechanism for triggering specific combinations.
+
+An instance is currently running at:
+
+[https://afternoon-refuge-37494.herokuapp.com](https://afternoon-refuge-37494.herokuapp.com)
