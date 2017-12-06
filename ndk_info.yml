@@ -1,0 +1,187 @@
+r16:
+  url: https://dl.google.com/android/repository/android-ndk-r16-linux-x86_64.zip
+  sha: b7dcb08fa9fa403e3c0bc3f741a445d7f0399e93
+  platforms:
+    - android-14
+    - android-15
+    - android-16
+    - android-17
+    - android-18
+    - android-19
+    - android-21
+    - android-22
+    - android-23
+    - android-24
+    - android-26
+    - android-27
+  toolchains:
+    - aarch64-linux-android-4.9
+    - arm-linux-androideabi-4.9
+    - llvm
+    - mips64el-linux-android-4.9
+    - mipsel-linux-android-4.9
+    - renderscript
+    - x86-4.9
+    - x86_64-4.9
+r15c:
+  url: https://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip
+  sha: 0bf02d4e8b85fd770fd7b9b2cdec57f9441f27a2
+  platforms:
+    - android-9
+    - android-12
+    - android-13
+    - android-14
+    - android-15
+    - android-16
+    - android-17
+    - android-18
+    - android-19
+    - android-21
+    - android-22
+    - android-23
+    - android-24
+    - android-26
+  toolchains:
+    - aarch64-linux-android-4.9
+    - arm-linux-androideabi-4.9
+    - llvm
+    - mips64el-linux-android-4.9
+    - mipsel-linux-android-4.9
+    - renderscript
+    - x86-4.9
+    - x86_64-4.9
+r14b:
+  url: https://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip
+  sha: becd161da6ed9a823e25be5c02955d9cbca1dbeb
+  platforms:
+    - android-9
+    - android-12
+    - android-13
+    - android-14
+    - android-15
+    - android-16
+    - android-17
+    - android-18
+    - android-19
+    - android-21
+    - android-22
+    - android-23
+    - android-24
+  toolchains:
+    - aarch64-linux-android-4.9
+    - arm-linux-androideabi-4.9
+    - llvm
+    - mips64el-linux-android-4.9
+    - mipsel-linux-android-4.9
+    - renderscript
+    - x86-4.9
+    - x86_64-4.9
+r13b:
+  url: https://dl.google.com/android/repository/android-ndk-r13b-linux-x86_64.zip
+  sha: 0600157c4ddf50ec15b8a037cfc474143f718fd0
+  platforms:
+    - android-9
+    - android-12
+    - android-13
+    - android-14
+    - android-15
+    - android-16
+    - android-17
+    - android-18
+    - android-19
+    - android-21
+    - android-22
+    - android-23
+    - android-24
+  toolchains:
+    - aarch64-linux-android-4.9
+    - arm-linux-androideabi-4.9
+    - llvm
+    - mips64el-linux-android-4.9
+    - mipsel-linux-android-4.9
+    - x86-4.9
+    - x86_64-4.9
+r12b:
+  url: https://dl.google.com/android/repository/android-ndk-r12b-linux-x86_64.zip
+  sha: 170a119bfa0f0ce5dc932405eaa3a7cc61b27694
+  platforms:
+    - android-9
+    - android-12
+    - android-13
+    - android-14
+    - android-15
+    - android-16
+    - android-17
+    - android-18
+    - android-19
+    - android-21
+    - android-22
+    - android-23
+    - android-24
+  toolchains:
+    - aarch64-linux-android-4.9
+    - arm-linux-androideabi-4.9
+    - llvm
+    - mips64el-linux-android-4.9
+    - mipsel-linux-android-4.9
+    - x86-4.9
+    - x86_64-4.9
+r11c:
+  url: https://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip
+  sha: de5ce9bddeee16fb6af2b9117e9566352aa7e279
+  platforms:
+    - android-3
+    - android-4
+    - android-5
+    - android-8
+    - android-9
+    - android-12
+    - android-13
+    - android-14
+    - android-15
+    - android-16
+    - android-17
+    - android-18
+    - android-19
+    - android-21
+    - android-23
+    - android-24
+  toolchains:
+    - aarch64-linux-android-4.9
+    - arm-linux-androideabi-4.9
+    - llvm
+    - mips64el-linux-android-4.9
+    - mipsel-linux-android-4.9
+    - x86-4.9
+    - x86_64-4.9
+r10e:
+  url: https://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip
+  sha: f692681b007071103277f6edc6f91cb5c5494a32
+  platforms:
+    - android-3
+    - android-4
+    - android-5
+    - android-8
+    - android-9
+    - android-12
+    - android-13
+    - android-14
+    - android-15
+    - android-16
+    - android-17
+    - android-18
+    - android-19
+    - android-21
+  toolchains:
+    - aarch64-linux-android-4.9
+    - arm-linux-androideabi-4.8
+    - arm-linux-androideabi-4.9
+    - llvm-3.5
+    - llvm-3.6
+    - mips64el-linux-android-4.9
+    - mipsel-linux-android-4.8
+    - mipsel-linux-android-4.9
+    - renderscript
+    - x86-4.8
+    - x86-4.9
+    - x86_64-4.9
