@@ -29,6 +29,10 @@ helpers do
   def link_icon
     @link_icon ||= svg_image('link.svg')
   end
+
+  def cross_icon
+    @cross_icon ||= svg_image('cross.svg')
+  end
 end
 
 get '/' do
