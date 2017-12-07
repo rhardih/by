@@ -32,41 +32,57 @@
 
   <h2>NDK Versions</h2>
 
+  <h3>Legends</h3>
+
+  <table class="pure-table pure-table-horizontal">
+    <tbody>
+      <tr>
+        <td><%= link_icon %></td>
+        <td>Ready</td>
+        <td><%= svg_image('minus-square.svg') %></td>
+        <td>Invalid combination</td>
+      </tr>
+    </tbody>
+  </table>
+
   <% settings.ndk_info.each do |n, value| %>
     <h2 id="<%= n %>" class="content-subhead"><%= n %></h2>
 
-    <table class="pure-table fullwidth">
-    <% value['platforms'].each_slice(twidth).with_index do |slice| %>
-        <thead>
+    <table class="pure-table pure-table-striped fullwidth ndk">
+      <% value['platforms'].each_slice(twidth) do |s| %>
+      <thead>
+        <tr>
+          <th>Platform / Toolchain</th>
+          <% s.each do |platform, toolchains| %>
+            <th><%= platform.gsub(/android-/, '') %></th>
+          <% end %>
+          <% 1.upto(twidth - s.size) do %>
+            <th></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% value['toolchains'].each do |toolchain| %>
           <tr>
-            <th>Platform / Toolchain</th>
-            <% slice.each.with_index do |p| %>
-              <th><%= p.gsub(/android-/, "") %></th>
-            <% end %>
-            <% 1.upto(twidth - slice.size) do %>
-              <th></th>
-            <% end %>
-          </tr>
-        </thead>
-        <tbody>
-          <% value['toolchains'].each.with_index do |t, i| %>
-            <tr class="<%= (i % 2 == 0) ? "pure-table-odd" : "" %>">
-              <td><%= t %></td>
-              <% slice.each.with_index do |p| %>
-                <td>
-                  <a href='<%= "/build/#{n}/#{p}/#{t}" %> '>
+            <td><%= toolchain %></td>
+            <% s.each do |platform, toolchains| %>
+              <td>
+                <% if !toolchains.nil? && toolchains.include?(toolchain) %>
+                  <a href='<%= "/build/#{n}/#{platform}/#{toolchain}" %> '>
                     <%= link_icon %>
                   </a>
-                </td>
-              <% end %>
-              <% 1.upto(twidth - slice.size) do %>
-                <td></td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-    <% end %>
+                <% else %>
+                  <span class="invalid"><%= svg_image('minus-square.svg') %></span>
+                <% end %>
+              </td>
+            <% end %>
+            <% 1.upto(twidth - s.size) do %>
+              <td></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+      <% end %>
     </table>
   <% end %>
 </div>
-
