@@ -12,3 +12,10 @@ along with a mechanism for triggering specific combinations.
 An instance is currently running on Heroku and available at:
 
 [https://stand.rhardih.io](https://stand.rhardih.io)
+
+## Disclaimer
+
+Please note that the use the Android NDK is subject to the Terms and Conditions
+laid forth by Google. For the full text, please see:
+
+[https://developer.android.com/ndk/downloads/](https://developer.android.com/ndk/downloads/index.html)
