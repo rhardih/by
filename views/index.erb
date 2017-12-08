@@ -37,7 +37,7 @@
   <table class="pure-table pure-table-horizontal">
     <tbody>
       <tr>
-        <td><%= link_icon %></td>
+        <td><%= svg_icon('link.svg') %></td>
         <td>Ready</td>
         <td><%= svg_image('minus-square.svg') %></td>
         <td>Invalid combination</td>
@@ -69,10 +69,10 @@
               <td>
                 <% if !toolchains.nil? && toolchains.include?(toolchain) %>
                   <a href='<%= "/build/#{n}/#{platform}/#{toolchain}" %> '>
-                    <%= link_icon %>
+                    <%= svg_icon('link.svg') %>
                   </a>
                 <% else %>
-                  <span class="invalid"><%= svg_image('minus-square.svg') %></span>
+                  <span class="invalid"><%= svg_icon('minus-square.svg') %></span>
                 <% end %>
               </td>
             <% end %>

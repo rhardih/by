@@ -16,22 +16,21 @@ Travis.access_token = ENV['TRAVIS_TOKEN']
 client = Travis::Client.new
 
 set :ndk_info, YAML.load_file('ndk_info.yml')
+set :icon_cache, Hash.new
 
 helpers do
   def current_page?(path = '')
     request.path_info == "/#{path}"
   end
 
-  def svg_image(filename)
-    File.read(File.join('public', 'images', filename))
-  end
-
-  def link_icon
-    @link_icon ||= svg_image('link.svg')
-  end
-
-  def cross_icon
-    @cross_icon ||= svg_image('cross.svg')
+  def method_missing(id, *args, &block)
+    if id =~ /svg_/
+      # memoize file reads
+      settings.icon_cache[args.first] ||=
+        File.read(File.join('public', 'images', args.first))
+    else
+      super
+    end
   end
 end
 
