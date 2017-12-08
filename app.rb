@@ -12,15 +12,21 @@ if ENV['TRAVIS_TOKEN'].nil?
   exit -1
 end
 
-Travis.access_token = ENV['TRAVIS_TOKEN']
-client = Travis::Client.new
-
 set :ndk_info, YAML.load_file('ndk_info.yml')
 set :icon_cache, Hash.new
+set :travis_client, Travis::Client.new(access_token: ENV['TRAVIS_TOKEN'])
 
 helpers do
   def current_page?(path = '')
     request.path_info == "/#{path}"
+  end
+
+  def partial(page, options={})
+    erb page, options.merge!(:layout => false)
+  end
+
+  def render_flash(type)
+    partial(:"partials/#{type}")
   end
 
   def method_missing(id, *args, &block)
@@ -39,8 +45,9 @@ get '/' do
 end
 
 get '/build/:ndk/:platform/:toolchain' do
-  stand = client.repo('rhardih/stand')
+  stand = settings.travis_client.repo('rhardih/stand')
 
+  settings.travis_client.clear_cache
   travis_busy = stand.builds.any? { |b| b.pending? }
 
   locals = {
@@ -50,19 +57,16 @@ get '/build/:ndk/:platform/:toolchain' do
   }
 
   if travis_busy
-
-    locals[:flash] = {
-      type: :warning,
-      message: "<label><strong>Warning</strong></label>: It seems Travis is already busy building a container, at the moment.  Please check the build progress and try again, when it's done.  <a href='https://travis-ci.org/rhardih/stand/builds'>https://travis-ci.org/rhardih/stand/builds</a>"
-    }
+    locals[:flash] = :travis_busy_warning
   end
 
   erb :build, locals: locals
 end
 
 post '/build/:ndk/:platform/:toolchain' do
-  stand = client.repo('rhardih/stand')
+  stand = settings.travis_client.repo('rhardih/stand')
 
+  settings.travis_client.clear_cache
   travis_busy = stand.builds.any? { |b| b.pending? }
 
   locals = {
@@ -72,12 +76,8 @@ post '/build/:ndk/:platform/:toolchain' do
   }
 
   if travis_busy
-    locals[:flash] = {
-      type: :warning,
-      message: "<label><strong>Warning</strong></label>: Build not started. Travis is already busy building."
-    }
+    locals[:flash] = :travis_busy_error
   else
-
     begin
       # TODO: Sanitize this
 
@@ -98,23 +98,17 @@ post '/build/:ndk/:platform/:toolchain' do
 
       case res
       when Net::HTTPSuccess, Net::HTTPRedirection
-        locals[:flash] = {
-          type: :success,
-          message: "<label><strong>Success</strong></label>: Build successfully started on Travis."
-        }
-
+        locals[:flash] = :travis_build_started
         locals[:travis][:busy]
+      when Net::HTTPTooManyRequests
+        locals[:flash] = :travis_rate_limit
+        travis_busy = true
       else
-        locals[:flash] = {
-          type: :warning,
-          message: "<label><strong>Warning</strong></label>: Something happened. #{res.value}"
-        }
+        p res
+        locals[:flash] = :unknown_error
       end
     rescue Net::HTTPServerException => e
-      locals[:flash] = {
-        type: :error,
-        message: "<label><strong>Error</strong></label>: Build not started on Travis. #{e}"
-      }
+      locals[:flash] = :unknown_error
     end
   end
 

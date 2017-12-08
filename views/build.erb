@@ -7,9 +7,7 @@
   <p>Start a build on Travis for the following configuration.</p>
 
   <% unless locals[:flash].nil? %>
-    <div class='pure-alert <%= "pure-alert-#{flash[:type]}" unless flash[:type].nil? %>'>
-      <%= flash[:message] %>
-    </div>
+    <%= render_flash(flash) %>
   <% end %>
 
 	<form class="pure-form pure-form-stacked" action="" method="post">
