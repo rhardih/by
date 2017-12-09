@@ -8,3 +8,6 @@ gem "travis", "~> 1.8"
 
 # Added at 2017-12-09 01:19:09 +0100 by rene:
 gem "docker_registry2", "~> 1.3"
+
+# Added at 2017-12-09 23:38:49 +0100 by rene:
+gem "puma", "~> 3.11"
