@@ -36,7 +36,7 @@ helpers do
   end
 
   def tag_built?(ndk, platform, toolchain)
-    tags_data["tags"].include?([ndk, platform.gsub(/ndroid-/, ''), toolchain].join('-'))
+    tags_data["tags"].include?([ndk, platform, toolchain].join('--'))
   end
 
   def method_missing(id, *args, &block)
@@ -101,9 +101,9 @@ post '/build/:ndk/:platform/:toolchain' do
         toolchain: params[:toolchain],
         tag: [
           params[:ndk],
-          params[:platform].gsub(/ndroid-/, ""),
+          params[:platform],
           params[:toolchain]
-        ].join("-")
+        ].join("--")
       )
 
       case res
