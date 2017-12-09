@@ -108,13 +108,13 @@ post '/build/:ndk/:platform/:toolchain' do
         ].join("--")
       )
 
+      locals[:travis][:busy] = true
+
       case res
       when Net::HTTPSuccess, Net::HTTPRedirection
         locals[:flash] = :travis_build_started
-        locals[:travis][:busy]
       when Net::HTTPTooManyRequests
         locals[:flash] = :travis_rate_limit
-        travis_busy = true
       else
         p res
         locals[:flash] = :unknown_error
