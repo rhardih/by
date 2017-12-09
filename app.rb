@@ -4,6 +4,7 @@ require 'net/http'
 require 'uri'
 require 'json'
 require 'yaml'
+require 'docker_registry2'
 
 require './trigger_build'
 
@@ -15,6 +16,7 @@ end
 set :ndk_info, YAML.load_file('ndk_info.yml')
 set :icon_cache, Hash.new
 set :travis_client, Travis::Client.new(access_token: ENV['TRAVIS_TOKEN'])
+set :dhub_client, DockerRegistry2.connect()
 
 helpers do
   def current_page?(path = '')
@@ -27,6 +29,14 @@ helpers do
 
   def render_flash(type)
     partial(:"partials/#{type}")
+  end
+
+  def tags_data
+    @tags_data ||= settings.dhub_client.tags('rhardih/stand')
+  end
+
+  def tag_built?(ndk, platform, toolchain)
+    tags_data["tags"].include?([ndk, platform.gsub(/ndroid-/, ''), toolchain].join('-'))
   end
 
   def method_missing(id, *args, &block)
