@@ -39,6 +39,10 @@ helpers do
     tags_data["tags"].include?([ndk, platform, toolchain].join('--'))
   end
 
+  def travis_busy?
+    settings.travis_client.repo('rhardih/stand').builds.any?(&:yellow?)
+  end
+
   def method_missing(id, *args, &block)
     if id =~ /svg_/
       # memoize file reads
@@ -58,15 +62,14 @@ get '/build/:ndk/:platform/:toolchain' do
   stand = settings.travis_client.repo('rhardih/stand')
 
   settings.travis_client.clear_cache
-  travis_busy = stand.builds.any? { |b| b.pending? }
 
   locals = {
     travis: {
-      busy: travis_busy
+      busy: travis_busy?
     }
   }
 
-  if travis_busy
+  if travis_busy?
     locals[:flash] = :travis_busy_warning
   end
 
@@ -77,15 +80,14 @@ post '/build/:ndk/:platform/:toolchain' do
   stand = settings.travis_client.repo('rhardih/stand')
 
   settings.travis_client.clear_cache
-  travis_busy = stand.builds.any? { |b| b.pending? }
 
   locals = {
     travis: {
-      busy: travis_busy
+      busy: travis_busy?
     }
   }
 
-  if travis_busy
+  if travis_busy?
     locals[:flash] = :travis_busy_error
   else
     begin
