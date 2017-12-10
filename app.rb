@@ -5,18 +5,25 @@ require 'uri'
 require 'json'
 require 'yaml'
 require 'docker_registry2'
+require 'redis'
 
 require './trigger_build'
 
-if ENV['TRAVIS_TOKEN'].nil?
-  puts "Missing TRAVIS_TOKEN"
-  exit -1
+[
+  'TRAVIS_TOKEN',
+  'REDIS_URL'
+].each do |var|
+  if ENV[var].nil?
+    puts "Missing env var: #{var}"
+    exit -1
+  end
 end
 
 set :ndk_info, YAML.load_file('ndk_info.yml')
 set :icon_cache, Hash.new
 set :travis_client, Travis::Client.new(access_token: ENV['TRAVIS_TOKEN'])
 set :dhub_client, DockerRegistry2.connect()
+set :redis_client, Redis.new(url: ENV['REDIS_URL'])
 
 helpers do
   def current_page?(path = '')
@@ -32,7 +39,18 @@ helpers do
   end
 
   def tags_data
-    @tags_data ||= settings.dhub_client.tags('rhardih/stand')
+    data = settings.redis_client.get('tags')
+
+    if data.nil?
+      tags = settings.dhub_client.tags('rhardih/stand')
+
+      settings.redis_client.set('tags', tags.to_json)
+      settings.redis_client.expire('tags', 60)
+
+      return tags
+    end
+
+    JSON.parse(data)
   end
 
   def tag_built?(ndk, platform, toolchain)
