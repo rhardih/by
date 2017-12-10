@@ -55,7 +55,14 @@ helpers do
 end
 
 get '/' do
-  erb :index, locals: { twidth: 7 }
+  locals = {
+    travis: {
+      busy: travis_busy?
+    },
+    twidth: 7
+  }
+
+  erb :index, locals: locals
 end
 
 get '/build/:ndk/:platform/:toolchain' do

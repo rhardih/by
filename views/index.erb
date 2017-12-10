@@ -37,11 +37,13 @@
   <table class="pure-table pure-table-horizontal">
     <tbody>
       <tr>
-        <td><%= svg_icon('check-square.svg') %></td>
-        <td>Built</td>
-        <td><%= svg_icon('link.svg') %></td>
+        <td class="ready"><%= svg_icon('link.svg') %></td>
         <td>Ready</td>
-        <td><%= svg_image('minus-square.svg') %></td>
+        <td class="busy"><%= svg_icon('link.svg') %></td>
+        <td>Busy</td>
+        <td class="built"><%= svg_icon('check-square.svg') %></td>
+        <td>Built</td>
+        <td class="invalid"><%= svg_image('minus-square.svg') %></td>
         <td>Invalid combination</td>
       </tr>
     </tbody>
@@ -68,7 +70,7 @@
           <tr>
             <td><%= toolchain %></td>
             <% s.each do |platform, toolchains| %>
-              <td>
+              <td class="<%= travis[:busy] ? "busy" : "ready" %>">
                 <% if !toolchains.nil? && toolchains.include?(toolchain) %>
                   <% if tag_built?(n, platform, toolchain) %>
                     <a class="built" href='<%= "/build/#{n}/#{platform}/#{toolchain}" %> '>
