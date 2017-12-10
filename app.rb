@@ -138,6 +138,7 @@ post '/build/:ndk/:platform/:toolchain' do
       case res
       when Net::HTTPSuccess, Net::HTTPRedirection
         locals[:flash] = :travis_build_started
+        settings.travis_client.clear_cache
       when Net::HTTPTooManyRequests
         locals[:flash] = :travis_rate_limit
       else
