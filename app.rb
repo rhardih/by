@@ -49,7 +49,7 @@ helpers do
       end
 
       settings.redis_client.set('tags', tags.to_json)
-      settings.redis_client.expire('tags', 60)
+      settings.redis_client.expire('tags', 300)
 
       return tags
     end
