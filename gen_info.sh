@@ -102,7 +102,7 @@ while read line; do
   for p in $platforms; do
     echo "    $p:" >> $output
     for t in $toolchains; do
-      if [[ check_min != 0 ]]; then
+      if [[ $check_min != 0 ]]; then
         version=${p#"android-"}
         arch=$(toolchain_to_arch "$t")
         min=$min1

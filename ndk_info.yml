@@ -442,45 +442,109 @@ r11c:
     - x86_64-4.9
   platforms:
     android-3:
+      - aarch64-linux-android-4.9
+      - arm-linux-androideabi-4.9
+      - llvm
+      - mips64el-linux-android-4.9
+      - mipsel-linux-android-4.9
+      - x86-4.9
+      - x86_64-4.9
     android-4:
+      - aarch64-linux-android-4.9
+      - arm-linux-androideabi-4.9
+      - llvm
+      - mips64el-linux-android-4.9
+      - mipsel-linux-android-4.9
+      - x86-4.9
+      - x86_64-4.9
     android-5:
+      - aarch64-linux-android-4.9
+      - arm-linux-androideabi-4.9
+      - llvm
+      - mips64el-linux-android-4.9
+      - mipsel-linux-android-4.9
+      - x86-4.9
+      - x86_64-4.9
     android-8:
+      - aarch64-linux-android-4.9
+      - arm-linux-androideabi-4.9
+      - llvm
+      - mips64el-linux-android-4.9
+      - mipsel-linux-android-4.9
+      - x86-4.9
+      - x86_64-4.9
     android-9:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.9
+      - llvm
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.9
       - x86-4.9
+      - x86_64-4.9
     android-12:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.9
+      - llvm
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.9
       - x86-4.9
+      - x86_64-4.9
     android-13:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.9
+      - llvm
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.9
       - x86-4.9
+      - x86_64-4.9
     android-14:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.9
+      - llvm
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.9
       - x86-4.9
+      - x86_64-4.9
     android-15:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.9
+      - llvm
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.9
       - x86-4.9
+      - x86_64-4.9
     android-16:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.9
+      - llvm
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.9
       - x86-4.9
+      - x86_64-4.9
     android-17:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.9
+      - llvm
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.9
       - x86-4.9
+      - x86_64-4.9
     android-18:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.9
+      - llvm
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.9
       - x86-4.9
+      - x86_64-4.9
     android-19:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.9
+      - llvm
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.9
       - x86-4.9
+      - x86_64-4.9
     android-21:
       - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.9
@@ -523,72 +587,174 @@ r10e:
     - x86_64-4.9
   platforms:
     android-3:
+      - aarch64-linux-android-4.9
+      - arm-linux-androideabi-4.8
+      - arm-linux-androideabi-4.9
+      - llvm-3.5
+      - llvm-3.6
+      - mips64el-linux-android-4.9
+      - mipsel-linux-android-4.8
+      - mipsel-linux-android-4.9
+      - renderscript
+      - x86-4.8
+      - x86-4.9
+      - x86_64-4.9
     android-4:
+      - aarch64-linux-android-4.9
+      - arm-linux-androideabi-4.8
+      - arm-linux-androideabi-4.9
+      - llvm-3.5
+      - llvm-3.6
+      - mips64el-linux-android-4.9
+      - mipsel-linux-android-4.8
+      - mipsel-linux-android-4.9
+      - renderscript
+      - x86-4.8
+      - x86-4.9
+      - x86_64-4.9
     android-5:
+      - aarch64-linux-android-4.9
+      - arm-linux-androideabi-4.8
+      - arm-linux-androideabi-4.9
+      - llvm-3.5
+      - llvm-3.6
+      - mips64el-linux-android-4.9
+      - mipsel-linux-android-4.8
+      - mipsel-linux-android-4.9
+      - renderscript
+      - x86-4.8
+      - x86-4.9
+      - x86_64-4.9
     android-8:
+      - aarch64-linux-android-4.9
+      - arm-linux-androideabi-4.8
+      - arm-linux-androideabi-4.9
+      - llvm-3.5
+      - llvm-3.6
+      - mips64el-linux-android-4.9
+      - mipsel-linux-android-4.8
+      - mipsel-linux-android-4.9
+      - renderscript
+      - x86-4.8
+      - x86-4.9
+      - x86_64-4.9
     android-9:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.8
       - arm-linux-androideabi-4.9
+      - llvm-3.5
+      - llvm-3.6
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.8
       - mipsel-linux-android-4.9
+      - renderscript
       - x86-4.8
       - x86-4.9
+      - x86_64-4.9
     android-12:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.8
       - arm-linux-androideabi-4.9
+      - llvm-3.5
+      - llvm-3.6
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.8
       - mipsel-linux-android-4.9
+      - renderscript
       - x86-4.8
       - x86-4.9
+      - x86_64-4.9
     android-13:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.8
       - arm-linux-androideabi-4.9
+      - llvm-3.5
+      - llvm-3.6
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.8
       - mipsel-linux-android-4.9
+      - renderscript
       - x86-4.8
       - x86-4.9
+      - x86_64-4.9
     android-14:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.8
       - arm-linux-androideabi-4.9
+      - llvm-3.5
+      - llvm-3.6
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.8
       - mipsel-linux-android-4.9
+      - renderscript
       - x86-4.8
       - x86-4.9
+      - x86_64-4.9
     android-15:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.8
       - arm-linux-androideabi-4.9
+      - llvm-3.5
+      - llvm-3.6
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.8
       - mipsel-linux-android-4.9
+      - renderscript
       - x86-4.8
       - x86-4.9
+      - x86_64-4.9
     android-16:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.8
       - arm-linux-androideabi-4.9
+      - llvm-3.5
+      - llvm-3.6
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.8
       - mipsel-linux-android-4.9
+      - renderscript
       - x86-4.8
       - x86-4.9
+      - x86_64-4.9
     android-17:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.8
       - arm-linux-androideabi-4.9
+      - llvm-3.5
+      - llvm-3.6
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.8
       - mipsel-linux-android-4.9
+      - renderscript
       - x86-4.8
       - x86-4.9
+      - x86_64-4.9
     android-18:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.8
       - arm-linux-androideabi-4.9
+      - llvm-3.5
+      - llvm-3.6
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.8
       - mipsel-linux-android-4.9
+      - renderscript
       - x86-4.8
       - x86-4.9
+      - x86_64-4.9
     android-19:
+      - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.8
       - arm-linux-androideabi-4.9
+      - llvm-3.5
+      - llvm-3.6
+      - mips64el-linux-android-4.9
       - mipsel-linux-android-4.8
       - mipsel-linux-android-4.9
+      - renderscript
       - x86-4.8
       - x86-4.9
+      - x86_64-4.9
     android-21:
       - aarch64-linux-android-4.9
       - arm-linux-androideabi-4.8
