@@ -42,7 +42,11 @@ helpers do
     data = settings.redis_client.get('tags')
 
     if data.nil?
-      tags = settings.dhub_client.tags('rhardih/stand')
+      begin
+        tags = settings.dhub_client.tags('rhardih/stand')
+      rescue RestClient::NotFound => e
+        tags = { "tags" => [] }
+      end
 
       settings.redis_client.set('tags', tags.to_json)
       settings.redis_client.expire('tags', 60)
