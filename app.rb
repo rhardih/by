@@ -81,6 +81,8 @@ helpers do
 end
 
 get '/' do
+  settings.travis_client.clear_cache
+
   locals = {
     travis: {
       busy: travis_busy?
@@ -92,8 +94,6 @@ get '/' do
 end
 
 get '/build/:ndk/:platform/:toolchain' do
-  stand = settings.travis_client.repo('rhardih/stand')
-
   settings.travis_client.clear_cache
 
   locals = {
@@ -110,8 +110,6 @@ get '/build/:ndk/:platform/:toolchain' do
 end
 
 post '/build/:ndk/:platform/:toolchain' do
-  stand = settings.travis_client.repo('rhardih/stand')
-
   settings.travis_client.clear_cache
 
   locals = {
