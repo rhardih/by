@@ -65,6 +65,10 @@ helpers do
     settings.travis_client.repo('rhardih/stand').builds.any?(&:yellow?)
   end
 
+  def production?
+    ENV['RACK_ENV'] == 'production'
+  end
+
   def method_missing(id, *args, &block)
     if id =~ /svg_/
       # memoize file reads
