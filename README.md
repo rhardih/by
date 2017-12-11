@@ -2,16 +2,25 @@
 
 [![Travis](https://travis-ci.org/rhardih/stand.svg?branch=master)](https://travis-ci.org/rhardih/stand)
 
-This is a small companion application to
-[Stand](https://github.com/rhardih/stand), which makes it possible to trigger
-automatic builds via Travis.
+An automatic build system for [**stand**](https://github.com/rhardih/stand)
+containers.
 
-It provides an extensive list of combinations of NDKs, platforms and toolchains,
-along with a mechanism for triggering specific combinations.
+![Screenshot](https://raw.githubusercontent.com/rhardih/by/master/public/images/screenshot.png)
 
-An instance is currently running on Heroku and available at:
+In short, **by** is a small web application, which provides an exhaustive
+overview of available **stand** containers images, based on combinations of what
+*NDK*, *platform* and *toolchain* each include. It also provides information
+about whether an image with a specific combination is already available to be
+pulled, or has yet to be built.
 
-[https://stand.rhardih.io](https://stand.rhardih.io)
+For images not yet built, **by** also provides a means for creating not yet existing
+combinations, by triggering builds on [Travis](https://travis-ci.org/), which
+subsequently pushes the resulting container images to [Docker
+Hub](https://hub.docker.com/r/rhardih/stand/tags)
+
+An instance is currently running on Heroku and made available at:
+
+[https://standby.rhardih.io](https://standby.rhardih.io)
 
 ## Disclaimer
 
