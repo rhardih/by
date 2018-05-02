@@ -27,7 +27,7 @@ class TriggerBuild
     ].join(' ')
 
     cmd = [
-      'docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"',
+      'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin',
       "docker build #{build_args} -t rhardih/stand:#{tag} .",
       "docker push rhardih/stand:#{tag}"
     ].join(" && ")
