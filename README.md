@@ -1,6 +1,6 @@
 # by
 
-[![Travis](https://travis-ci.org/rhardih/stand.svg?branch=master)](https://travis-ci.org/rhardih/stand)
+[![Travis](https://travis-ci.com/rhardih/stand.svg?branch=master)](https://travis-ci.com/rhardih/stand)
 
 An automatic build system for [**stand**](https://github.com/rhardih/stand)
 containers.
@@ -13,9 +13,9 @@ overview of available **stand** containers images, based on combinations of what
 about whether an image with a specific combination is already available to be
 pulled, or has yet to be built.
 
-For images not yet built, **by** also provides a means for creating not yet existing
-combinations, by triggering builds on [Travis](https://travis-ci.org/), which
-subsequently pushes the resulting container images to [Docker
+For images not yet built, **by** also provides a means for creating not yet
+existing combinations, by triggering builds on [Travis](https://travis-ci.com/),
+which subsequently pushes the resulting container images to [Docker
 Hub](https://hub.docker.com/r/rhardih/stand/tags)
 
 An instance is currently running on Heroku and made available at:

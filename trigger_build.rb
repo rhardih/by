@@ -2,7 +2,7 @@ require 'net/http'
 
 class TriggerBuild
   def self.call(ndk_url:, ndk_sha:, platform:, toolchain:, tag:)
-    uri = URI('https://api.travis-ci.org/repo/rhardih%2Fstand/requests')
+    uri = URI('https://api.travis-ci.com/repo/rhardih%2Fstand/requests')
 
     http = Net::HTTP.new(uri.hostname, uri.port)
     http.use_ssl = true
