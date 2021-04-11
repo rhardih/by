@@ -1,4 +1,4 @@
-ruby '2.3.1'
+ruby '2.7.2'
 
 source 'https://rubygems.org'
 gem 'sinatra'
@@ -14,3 +14,9 @@ gem "puma", "~> 3.11"
 
 # Added at 2017-12-10 23:40:19 +0100 by rene:
 gem "redis", "~> 4.0"
+
+# Added at 2021-04-11 17:44:20 +0200 by rene:
+
+gem "nokogiri", "~> 1.11"
+
+gem "httparty", "~> 0.18.1"
