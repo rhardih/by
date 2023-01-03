@@ -19,4 +19,4 @@ gem "redis", "~> 4.0"
 
 gem "nokogiri", "~> 1.13"
 
-gem "httparty", "~> 0.18.1"
+gem "httparty", "~> 0.21.0"
