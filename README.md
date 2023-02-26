@@ -18,7 +18,9 @@ existing combinations, by triggering builds on [Travis](https://travis-ci.com/),
 which subsequently pushes the resulting container images to [Docker
 Hub](https://hub.docker.com/r/rhardih/stand/tags)
 
-An instance is currently running on Heroku and made available at:
+An instance is currently is currently hosted on a free plan on
+[Render](https://render.com) and is automatically deployed from the `master`
+branch. It is available at:
 
 [https://standby.rhardih.io](https://standby.rhardih.io)
 
