@@ -4,7 +4,7 @@
 </div>
 
 <div class="content">
-  <p>Start a build on Travis for the following configuration.</p>
+  <p>Start a build on Github for the following configuration.</p>
 
   <% unless locals[:flash].nil? %>
     <%= render_flash(flash) %>
@@ -34,7 +34,7 @@
       <br />
 
       <button type="submit" class="pure-button pure-button-primary"
-        <%= "disabled" if travis[:busy] %>>Submit</button>
+        <%= "disabled" if github[:busy] %>>Submit</button>
       &nbsp;
       <a href='/'>Back</a>
     </fieldset>
