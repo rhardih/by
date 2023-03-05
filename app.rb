@@ -1,16 +1,15 @@
-require 'sinatra'
-require 'travis'
-require 'net/http'
-require 'uri'
-require 'json'
-require 'yaml'
 require 'docker_registry2'
+require 'json'
+require 'net/http'
 require 'redis'
+require 'sinatra'
+require 'uri'
+require 'yaml'
 
-require './trigger_build'
+require './github'
 
 [
-  'TRAVIS_TOKEN',
+  'GITHUB_TOKEN',
   'REDIS_URL'
 ].each do |var|
   if ENV[var].nil?
@@ -21,7 +20,7 @@ end
 
 set :ndk_info, YAML.load_file('ndk_info.yml')
 set :icon_cache, Hash.new
-set :travis_client, Travis::Client.new(access_token: ENV['TRAVIS_TOKEN'])
+set :github_client, Github.new(ENV['GITHUB_TOKEN'])
 set :dhub_client, DockerRegistry2.connect()
 set :redis_client, Redis.new(url: ENV['REDIS_URL'])
 
@@ -61,10 +60,6 @@ helpers do
     tags_data["tags"].include?([ndk, platform, toolchain].join('--'))
   end
 
-  def travis_busy?
-    settings.travis_client.repo('rhardih/stand').builds.any?(&:yellow?)
-  end
-
   def production?
     ENV['RACK_ENV'] == 'production'
   end
@@ -81,11 +76,9 @@ helpers do
 end
 
 get '/' do
-  settings.travis_client.clear_cache
-
   locals = {
-    travis: {
-      busy: travis_busy?
+    github: {
+      busy: settings.github_client.active_workflow_runs?
     },
     twidth: 7
   }
@@ -94,42 +87,34 @@ get '/' do
 end
 
 get '/build/:ndk/:platform/:toolchain' do
-  settings.travis_client.clear_cache
-
   locals = {
-    travis: {
-      busy: travis_busy?
+    github: {
+      busy: settings.github_client.active_workflow_runs?
     }
   }
 
-  if travis_busy?
-    locals[:flash] = :travis_busy_warning
+  if settings.github_client.active_workflow_runs?
+    locals[:flash] = :github_busy_warning
   end
 
   erb :build, locals: locals
 end
 
 post '/build/:ndk/:platform/:toolchain' do
-  settings.travis_client.clear_cache
-
   locals = {
-    travis: {
-      busy: travis_busy?
+    github: {
+      busy: settings.github_client.active_workflow_runs?
     }
   }
 
-  if travis_busy?
-    locals[:flash] = :travis_busy_error
+  if settings.github_client.active_workflow_runs?
+    locals[:flash] = :github_busy_error
   else
     begin
       # TODO: Sanitize this
 
-      ndk_url = settings.ndk_info[params[:ndk]]["url"]
-      ndk_sha = settings.ndk_info[params[:ndk]]["sha"]
-
-      res = TriggerBuild.call(
-        ndk_url: ndk_url,
-        ndk_sha: ndk_sha,
+      res = settings.github_client.trigger_build(
+        ndk: params[:ndk],
         platform: params[:platform],
         toolchain: params[:toolchain],
         tag: [
@@ -139,19 +124,18 @@ post '/build/:ndk/:platform/:toolchain' do
         ].join("--")
       )
 
-      locals[:travis][:busy] = true
+      locals[:github][:busy] = true
 
       case res
       when Net::HTTPSuccess, Net::HTTPRedirection
-        locals[:flash] = :travis_build_started
-        settings.travis_client.clear_cache
+        locals[:flash] = :github_build_started
       when Net::HTTPTooManyRequests
-        locals[:flash] = :travis_rate_limit
+        locals[:flash] = :github_rate_limit
       else
-        p res
         locals[:flash] = :unknown_error
       end
-    rescue Net::HTTPServerException => e
+    rescue Net::HTTPServerException, Net::HTTPError => e
+      puts e
       locals[:flash] = :unknown_error
     end
   end

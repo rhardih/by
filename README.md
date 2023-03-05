@@ -1,7 +1,5 @@
 # by
 
-[![Travis](https://travis-ci.com/rhardih/stand.svg?branch=master)](https://travis-ci.com/rhardih/stand)
-
 An automatic build system for [**stand**](https://github.com/rhardih/stand)
 containers.
 
@@ -14,7 +12,7 @@ about whether an image with a specific combination is already available to be
 pulled, or has yet to be built.
 
 For images not yet built, **by** also provides a means for creating not yet
-existing combinations, by triggering builds on [Travis](https://travis-ci.com/),
+existing combinations, by triggering builds on [Github](https://github.com/),
 which subsequently pushes the resulting container images to [Docker
 Hub](https://hub.docker.com/r/rhardih/stand/tags)
 
