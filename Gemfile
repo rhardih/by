@@ -17,3 +17,5 @@ gem "redis", "~> 4.0"
 gem "nokogiri", "~> 1.11"
 
 gem "httparty", "~> 0.18.1"
+
+gem "zip_tricks", "~> 5.6"
