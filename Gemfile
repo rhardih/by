@@ -14,7 +14,7 @@ gem "redis", "~> 4.0"
 
 # Added at 2021-04-11 17:44:20 +0200 by rene:
 
-gem "nokogiri", "~> 1.11"
+gem "nokogiri", "~> 1.14"
 
 gem "httparty", "~> 0.18.1"
 
