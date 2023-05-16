@@ -7,7 +7,7 @@ WORKDIR /by
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
-COPY app.rb trigger_build.rb ndk_info.yml config.ru .
+COPY app.rb github.rb ndk_info.yml config.ru .
 COPY views ./views
 COPY public ./public
 
