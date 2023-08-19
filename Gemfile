@@ -7,7 +7,7 @@ gem 'sinatra'
 gem "docker_registry2", "~> 1.3"
 
 # Added at 2017-12-09 23:38:49 +0100 by rene:
-gem "puma", "~> 4.3"
+gem "puma", "~> 5.6"
 
 # Added at 2017-12-10 23:40:19 +0100 by rene:
 gem "redis", "~> 4.0"
